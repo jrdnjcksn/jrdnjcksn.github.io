@@ -31,7 +31,7 @@ chatWrapper.initEmbeddedMessaging = function (lang) {
 
 			embeddedservice_bootstrap.init(
 				'00DWC000000EenB',
-				'Demo_ESD_470196280',
+				'Example_External_ESD',
 				'https://jordanjackson-cdo2--preview.sandbox.my.site.com/ESWExampleExternalESD1753885862476',
 				{
 					scrt2URL: 'https://jordanjackson-cdo2--preview.sandbox.my.salesforce-scrt.com'

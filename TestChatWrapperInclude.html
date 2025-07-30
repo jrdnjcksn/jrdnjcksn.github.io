@@ -67,21 +67,35 @@
 
 </body>
 <!-- Insert your live chat widget code below -->
-
 <script>
-    let dynamicScript = document.createElement('script');
-    dynamicScript.setAttribute('src','https://jrdnjcksn.github.io/MIAWTestWrapper.js');
+	function init() {
+		console.log('page init...');
+		const urlParams = new URLSearchParams(window.location.search);
+		const language = urlParams.get('language');
+		
+		if (language == undefined || language === 'en-US' || language === 'en_US' || language === 'en') {
+			document.querySelector('#language').value = 'English';
+			console.log('set language to english');
+		}
+		else if (language == 'es' || language == 'es-ES' || language === 'es-MX' || language === 'spa') {
+			document.querySelector('#language').value = 'Spanish';
+			console.log('set language to spanish');
+		}
+	}
+	init();
+</script>
+<script>
+    	let dynamicScript = document.createElement('script');
+	dynamicScript.setAttribute('src','https://jrdnjcksn.github.io/MIAWTestWrapper.js');
 	//dynamicScript.setAttribute('src','./MIAWTestWrapper.js');
     
 	const bodyElement = document.body;
-    bodyElement.insertAdjacentElement('afterend', dynamicScript);
+	bodyElement.insertAdjacentElement('afterend', dynamicScript);
 	
-    function readValues(){
-      
-		const lang = document.querySelector('#language').value;
+	function readValues(){
+      		const lang = document.querySelector('#language').value;
 		chatWrapper.initEmbeddedMessaging(lang);
-	
-    }
+	}
 
 </script>
 <script type='text/javascript' src='https://jordanjackson-cdo2--preview.sandbox.my.site.com/ESWExampleExternalESD1753885862476/assets/js/bootstrap.min.js' ></script>

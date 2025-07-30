@@ -122,8 +122,10 @@
 			lang = 'es';
 		}
 		try {
-			console.log('Language pref set to ' + lang);
-			embeddedservice_bootstrap.settings.language = lang; // For example, enter 'en' or 'en-US'
+			const urlParams = new URLSearchParams(window.location.search);
+			const language = urlParams.get('language');
+			console.log('Language pref set to ' + language);
+			embeddedservice_bootstrap.settings.language = language; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
 				'00DWC000000EenB',

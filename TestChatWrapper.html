@@ -115,16 +115,21 @@
 
 <script type='text/javascript'>
 	function init() {
+		console.log('page init...');
 		const urlParams = new URLSearchParams(window.location.search);
 		const language = urlParams.get('language');
 		
 		if (language == undefined || language === 'en-US' || language === 'en_US' || languague === 'en') {
 			document.querySelector('#language').value = 'English';
+			console.log('set language to english');
 		}
 		else if (language == 'es' || language == 'es-ES' || languauge === 'es-MX' || language === 'spa') {
 			document.querySelector('#language').value = 'Spanish';
+			console.log('set language to spanish');
 		}
 	}
+	init();
+	
 	function initEmbeddedMessaging(lang) {
 		if (lang === 'English') {
 			lang = 'en-US';

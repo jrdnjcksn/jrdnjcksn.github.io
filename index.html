@@ -1,0 +1,24 @@
+<html>
+<body>
+<p>hello world</p>
+</body>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DWC000000EenB',
+				'Demo_ESD_470196280',
+				'https://jordanjackson-cdo2--preview.sandbox.my.site.com/ESWDemoESD4701962801744211202133',
+				{
+					scrt2URL: 'https://jordanjackson-cdo2--preview.sandbox.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://jordanjackson-cdo2--preview.sandbox.my.site.com/ESWDemoESD4701962801744211202133/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+</html>

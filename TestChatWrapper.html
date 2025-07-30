@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style type='text/css'>
+	.input-box{
+		display: flex;
+		padding-top: 0.5rem;
+		width: 400px;
+	}
+	.input-label{
+		width: 125px;
+	}
+
+	body{
+		background-color: gray;
+		display: flex;
+		flex-direction: column;
+		/* height: 100vh; */
+		align-items: flex-start;
+		justify-content: center;
+		margin: unset;
+		padding-left: 5rem;
+		padding-top: 2rem;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	button{
+		background: unset;
+		padding: 0.5rem;
+		background-color: white;
+		border: unset;
+		border-radius: 0.25rem;
+		cursor: pointer;
+	}
+	button:hover{
+		background-color: lightgray;
+	}
+	input{
+		border: unset;
+		background: unset;
+		background-color: white;
+		border-radius: 0.1rem;
+		padding: 0.25rem;
+	}
+	input:focus-visible{
+		outline: unset;
+	}
+
+
+</style>
+<title> In-app Test Page</title>
+</head>
+<body>
+<h1>&#128047 Lang Test MIAW &#128008</h1>
+<p>Welcome to our live chat test page. Please click on the chat button to start a conversation with our live agent.</p>
+
+<div class="custom-input">
+	
+
+	<div class="input-box">
+		<div class="input-label">Language</div>
+		<input class="input-field" id="language" value="English"/>
+	</div>
+	
+	
+</div>
+	
+<!-- Create a custom button or invitation to launch the web chat client.  Put inside emma chat eventually-->
+
+<button id="launchChatButton" onclick="readValues()">Set fields and go</button>
+
+
+	<script>
+    function readValues(){
+      
+	const lang = document.querySelector('#language').value;
+	initEmbeddedMessaging(lang);
+    }
+
+	window.addEventListener("onEmbeddedMessagingButtonCreated", (event) => {
+    console.log("Received the Button Created event…");
+    console.log("Event detail: ", event.detail);
+    let evtResponse = JSON.parse(JSON.stringify(event.detail));
+    console.log('flag ' + evtResponse.buttonVisibility);
+    let agentVisible = (evtResponse.buttonVisibility === "Show")? true : false;
+    embeddedservice_bootstrap.utilAPI.hideChatButton();
+    
+	console.log('launching');
+        embeddedservice_bootstrap.utilAPI.launchChat()
+            .then(() => {
+                // Success handler used to perform actions
+                // when the chat client launches successfully.
+                // For example, create a method that disables the launch chat button.
+                console.log('in launched');
+                //disableLaunchChatButton();
+            }).catch(() => {
+                // Error handler used to perform actions
+                // if the chat client fails to launch.
+                // For example, create a method that hides the launch chat button.
+                // hideLaunchChatButton();
+                console.log('failed to launch');
+            }).finally(() => {
+                // Finally handler used to perform any clean-up actions
+                // regardless of whether the chat client launches successfully or not.
+                // For example, create a method that logs the user’s attempt to chat.
+                //logEndUserAttemptToChat();
+                console.log('finally done');
+            });
+    // Do something...
+  });
+
+</script>
+
+</body>
+
+<script type='text/javascript'>
+	function initEmbeddedMessaging(lang) {
+
+		try {
+			embeddedservice_bootstrap.settings.language = 'es'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DWC000000EenB',
+				'Demo_ESD_470196280',
+				'https://jordanjackson-cdo2--preview.sandbox.my.site.com/ESWDemoESD4701962801744211202133',
+				{
+					scrt2URL: 'https://jordanjackson-cdo2--preview.sandbox.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://jordanjackson-cdo2--preview.sandbox.my.site.com/ESWDemoESD4701962801744211202133/assets/js/bootstrap.min.js'></script>
+</html>

@@ -27,7 +27,7 @@ chatWrapper.initEmbeddedMessaging = function (lang) {
 		}
 		try {
 			console.log('Setting language preference to: ' + lang);
-			embeddedservice_bootstrap.settings.language = 'es'; // For example, enter 'en' or 'en-US'
+			embeddedservice_bootstrap.settings.language = lang; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
 				'00DWC000000EenB',

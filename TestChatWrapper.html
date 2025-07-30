@@ -115,9 +115,15 @@
 
 <script type='text/javascript'>
 	function initEmbeddedMessaging(lang) {
-
+		if (lang === 'English') {
+			lang = 'en-US';
+		}
+		else {
+			lang = 'es';
+		}
 		try {
-			embeddedservice_bootstrap.settings.language = 'es'; // For example, enter 'en' or 'en-US'
+			console.log('Language pref set to ' + lang);
+			embeddedservice_bootstrap.settings.language = lang; // For example, enter 'en' or 'en-US'
 
 			embeddedservice_bootstrap.init(
 				'00DWC000000EenB',
